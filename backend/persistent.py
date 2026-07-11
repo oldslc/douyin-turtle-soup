@@ -100,6 +100,10 @@ class PersistentDB:
                     amount INTEGER,
                     timestamp REAL
                 );
+                CREATE TABLE IF NOT EXISTS settings (
+                    key TEXT PRIMARY KEY,
+                    value TEXT
+                );
                 """
             )
             self.conn.commit()
@@ -265,3 +269,18 @@ class PersistentDB:
     def close(self):
         with self._lock:
             self.conn.close()
+
+    # ── 配置键值存储 ──
+    def get_setting(self, key: str, default=None):
+        with self._lock:
+            cur = self.conn.execute("SELECT value FROM settings WHERE key=?", (key,))
+            row = cur.fetchone()
+            return row[0] if row else default
+
+    def set_setting(self, key: str, value: str):
+        with self._lock:
+            self.conn.execute(
+                "INSERT INTO settings(key,value) VALUES(?,?) ON CONFLICT(key) DO UPDATE SET value=excluded.value",
+                (key, value),
+            )
+            self.conn.commit()

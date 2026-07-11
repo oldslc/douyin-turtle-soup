@@ -6,6 +6,7 @@ dist/
 
 # Python
 venv/
+.venv/
 __pycache__/
 *.pyc
 *.pyo
@@ -30,6 +31,9 @@ models/
 *.gguf
 *.safetensors
 *.bin
+
+# CosyVoice3 模型文件（大型二进制，用户单独下载）
+backend/CosyVoice/pretrained_models/
 
 # Meoo
 meoo_files.json
@@ -60,3 +64,22 @@ build/
 
 # Playwright
 .playwright-mcp/
+
+# Generated route files
+meoo_frontend/src/routeTree.gen.ts
+
+# License key files (developer-specific, DO NOT COMMIT)
+backend/standalone/secret.key
+backend/standalone/public.key
+license_tools/secret.key
+license_tools/public.key
+
+# Keygen build artifacts
+license_tools/build/
+license_tools/*.spec
+license_tools/dist/
+
+# Binary / bundled EXEs (should be built by CI, not committed)
+CCcat海龟汤.exe
+答题系统.exe_extracted/
+.gstack/

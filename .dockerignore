@@ -1,0 +1,35 @@
+# Python
+venv/
+__pycache__/
+*.pyc
+*.pyo
+.env
+
+# Node
+node_modules/
+dist/
+
+# IDE
+.idea/
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Model files
+models/
+*.gguf
+*.safetensors
+*.bin
+backend/CosyVoice/pretrained_models/
+
+# Build
+build/
+*.spec
+
+# Test
+tests/

@@ -1,0 +1,12 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "backend-server",
+      "autoPort": true,
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["backend/server.py"],
+      "port": 3010
+    }
+  ]
+}

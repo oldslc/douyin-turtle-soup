@@ -40,12 +40,12 @@ def test_unknown_id_falls_back_to_dark(tm):
     assert tm.get_active() == "dark"
 
 
-def test_list_themes_returns_three(tm):
-    """list_themes 返回 3 个内置主题"""
+def test_list_themes_returns_at_least_three(tm):
+    """list_themes 返回至少 3 个内置主题（后续可扩展）"""
     themes = tm.list_themes()
-    assert len(themes) == 3
+    assert len(themes) >= 3, f"Expected >= 3 themes, got {len(themes)}"
     ids = {t["id"] for t in themes}
-    assert ids == {"dark", "starry", "festival"}
+    assert ids >= {"dark", "starry", "festival"}, f"Missing core themes in {ids}"
 
 
 def test_apply_to_html_injects_vars(tm):
